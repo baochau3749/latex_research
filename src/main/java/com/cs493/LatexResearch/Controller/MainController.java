@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class MainController {
 
-	@RequestMapping("/")
-	@ResponseBody
-	public String main(Model theModel) {
-		System.out.println(">>> Hello.............");
-		
-		return "Hello - Add latex_files folder";
-	}
+//	@RequestMapping("/")
+//	@ResponseBody
+//	public String main(Model theModel) {
+//		System.out.println(">>> Hello.............");
+//		
+//		return "Hello - Add latex_files folder";
+//	}
 	
 }
