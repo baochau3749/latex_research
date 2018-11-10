@@ -8,5 +8,5 @@ public class LatexResearchApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(LatexResearchApplication.class, args);
-	}
+	} 
 }
