@@ -22,7 +22,7 @@ public class MainController {
 //		return "Hello - Add latex_files folder";
 //	}
 	
-public static final Resource LATEX_DIR = new ClassPathResource("/latex_files");
+public static final Resource LATEX_DIR = new ClassPathResource("/resources/latex_files");
 	
 	@RequestMapping("/")
 	@ResponseBody
