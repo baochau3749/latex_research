@@ -14,7 +14,7 @@ public class MainController {
 	public String main(Model theModel) {
 		System.out.println(">>> Hello.............");
 		
-		return "Hello - Add Static folder";
+		return "Hello - Add latex_files folder";
 	}
 	
 }
