@@ -59,29 +59,32 @@ public class CommandRunner implements CommandLineRunner {
 //		
 //		System.out.println("Run process - 4");
 //		
-//		System.out.println("Run process - 3");
-//		Process p = Runtime.getRuntime().exec("pdflatex ~/target/classes/static/document_2.tex");
-//		
-//		System.out.println("Run process - 4");		
-//		BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));		
-//		BufferedReader stdError = new BufferedReader(new InputStreamReader(p.getErrorStream()));
-//		
-//		System.out.println("Run process - 5");
-//		System.out.println("****************************************************************");
-//        System.out.println("Result status:");		
-//		String s = null;
-//        while ((s = stdInput.readLine()) != null) {
-//            System.out.println(s);
-//        }
-//        
-//        System.out.println("Result error:");
-//        while ((s = stdError.readLine()) != null) {
-//            System.out.println(s);
-//        }
-//        System.out.println("****************************************************************");
-//        
-//        
-//		logger.info("\n>>> End Latex_Research from CommandRunner...................");
+		String[] cmd = new String[2];
+		cmd[0] = "pdflatex" ;
+        cmd[1] = "~/target/classes/static/document_2.tex" ;
+		System.out.println("Run process - 3");
+		Process p = Runtime.getRuntime().exec(cmd);
+		
+		System.out.println("Run process - 4");		
+		BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));		
+		BufferedReader stdError = new BufferedReader(new InputStreamReader(p.getErrorStream()));
+		
+		System.out.println("Run process - 5");
+		System.out.println("****************************************************************");
+        System.out.println("Result status:");		
+		String s = null;
+        while ((s = stdInput.readLine()) != null) {
+            System.out.println(s);
+        }
+        
+        System.out.println("Result error:");
+        while ((s = stdError.readLine()) != null) {
+            System.out.println(s);
+        }
+        System.out.println("****************************************************************");
+        
+        
+		logger.info("\n>>> End Latex_Research from CommandRunner...................");
 
 	}
 	

@@ -47,42 +47,43 @@ public class MainController {
 //		theModel.addAttribute("latexFolder", latexFolder);
 //		theModel.addAttribute("pdfDoc", pdfDoc); 
 		
-		System.out.println("Run process - 3");
-		Process p = Runtime.getRuntime().exec("pdflatex ~/target/classes/document_2.tex");
-		
-		System.out.println("Run process - 4");		
-		BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));		
-		BufferedReader stdError = new BufferedReader(new InputStreamReader(p.getErrorStream()));
-		
-		System.out.println("Run process - 5");
-		System.out.println("****************************************************************");
-        System.out.println("Result status:");		
-		String s = null;
-        while ((s = stdInput.readLine()) != null) {
-            System.out.println(s);
-        }
-        
-        System.out.println("Result error:");
-        while ((s = stdError.readLine()) != null) {
-            System.out.println(s);
-        }
-        System.out.println("****************************************************************");
-        
-        
-		logger.info("\n>>> End Latex_Research from CommandRunner...................");
-
-		
-		logger.info("\n>>> End main from MainController...................");
-		
-		
-//		String latexFolder = LATEX_DIR.getFile().getAbsolutePath();
-//		String pdfDoc = latexFolder + "\\hello.pdf";
+//		System.out.println("Run process - 3");
 //		
-//		System.out.println(">>> latexFolder = " + latexFolder);
-//		System.out.println(">>> pdfDoc = " + pdfDoc);
+//		Process p = Runtime.getRuntime().exec("pdflatex ~/target/classes/document_2.tex");
 //		
-//		theModel.addAttribute("latexFolder", latexFolder);
-//		theModel.addAttribute("pdfDoc", pdfDoc); 
+//		System.out.println("Run process - 4");		
+//		BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));		
+//		BufferedReader stdError = new BufferedReader(new InputStreamReader(p.getErrorStream()));
+//		
+//		System.out.println("Run process - 5");
+//		System.out.println("****************************************************************");
+//        System.out.println("Result status:");		
+//		String s = null;
+//        while ((s = stdInput.readLine()) != null) {
+//            System.out.println(s);
+//        }
+//        
+//        System.out.println("Result error:");
+//        while ((s = stdError.readLine()) != null) {
+//            System.out.println(s);
+//        }
+//        System.out.println("****************************************************************");
+//        
+//        
+//		logger.info("\n>>> End Latex_Research from CommandRunner...................");
+//
+//		
+//		logger.info("\n>>> End main from MainController...................");
+//		
+//		
+////		String latexFolder = LATEX_DIR.getFile().getAbsolutePath();
+////		String pdfDoc = latexFolder + "\\hello.pdf";
+////		
+////		System.out.println(">>> latexFolder = " + latexFolder);
+////		System.out.println(">>> pdfDoc = " + pdfDoc);
+////		
+////		theModel.addAttribute("latexFolder", latexFolder);
+////		theModel.addAttribute("pdfDoc", pdfDoc); 
 		
 		//return "Hello - Updated main controller - 7";
 		return "hello";
