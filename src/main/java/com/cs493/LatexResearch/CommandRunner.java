@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 public class CommandRunner implements CommandLineRunner {
 	Logger logger = LoggerFactory.getLogger(LatexResearchApplication.class);
 	public static final Resource LATEX_DIR = new ClassPathResource("/latex_files");
+	public static final Resource LATEX_FILE = new ClassPathResource("/latex_files/document.tex");
 	
 	
 	@Override
@@ -36,7 +37,7 @@ public class CommandRunner implements CommandLineRunner {
 		System.out.println("Run process - 1");
 		//Process p = Runtime.getRuntime().exec("ipconfig");
 		//Process p = Runtime.getRuntime().exec("pdflatex C:\\heroku\\bc-test-buildpack\\document.tex");
-		Process p = Runtime.getRuntime().exec("pdflatex " + latexFile);
+		Process p = Runtime.getRuntime().exec("pdflatex " + LATEX_FILE.getFilename());
 		System.out.println("Run process - 2");
 		//p.wait();
 		System.out.println("Run process - 3");
