@@ -27,7 +27,7 @@ public class MainController {
 //	}
 	
 	Logger logger = LoggerFactory.getLogger(LatexResearchApplication.class);
-	public static final Resource LATEX_DIR = new ClassPathResource("/latex_files");
+//	public static final Resource LATEX_DIR = new ClassPathResource("/latex_files");
 	
 	@RequestMapping("/")
 	//@ResponseBody
@@ -35,16 +35,16 @@ public class MainController {
 		
 		logger.info("\n>>> Start main from MainController...................");
 		
-		
-		String latexFolder = LATEX_DIR.getURL().toString();
-		String pdfDoc = latexFolder + "/hello.pdf";
-		
-		System.out.println(">>> latexFolder = " + latexFolder);
-		System.out.println(">>> pdfDoc = " + pdfDoc);
-		
-		theModel.addAttribute("latexFolder", latexFolder);
-		theModel.addAttribute("pdfDoc", pdfDoc); 
-		
+//		
+//		String latexFolder = LATEX_DIR.getURL().toString();
+//		String pdfDoc = latexFolder + "/hello.pdf";
+//		
+//		System.out.println(">>> latexFolder = " + latexFolder);
+//		System.out.println(">>> pdfDoc = " + pdfDoc);
+//		
+//		theModel.addAttribute("latexFolder", latexFolder);
+//		theModel.addAttribute("pdfDoc", pdfDoc); 
+//		
 		logger.info("\n>>> End main from MainController...................");
 		
 		
