@@ -19,7 +19,7 @@ public class CommandRunner implements CommandLineRunner {
 	Logger logger = LoggerFactory.getLogger(LatexResearchApplication.class);
 	
 	public static final Resource LATEX_DIR = new ClassPathResource("/latex_files");
-	public static final Resource LATEX_FILE = new ClassPathResource("/latex_files/document.tex");
+	public static final Resource LATEX_FILE = new ClassPathResource("/document.tex");
 	
 	
 	@Override
