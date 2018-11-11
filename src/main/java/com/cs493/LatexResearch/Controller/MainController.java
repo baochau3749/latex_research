@@ -42,6 +42,9 @@ public class MainController {
 		System.out.println(">>> latexFolder = " + latexFolder);
 		System.out.println(">>> pdfDoc = " + pdfDoc);
 		
+		theModel.addAttribute("latexFolder", latexFolder);
+		theModel.addAttribute("pdfDoc", pdfDoc); 
+		
 		logger.info("\n>>> End main from MainController...................");
 		
 		

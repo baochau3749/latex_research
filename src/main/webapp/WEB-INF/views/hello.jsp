@@ -17,10 +17,13 @@
 	
 	<p><h4>Pdf link: <a href="${pdfDoc}">Pdf Document Link</a></h4></p>
 	<hr>
-	
-	<c:url var="updateLink" value="${pageContect.request.contextPath}/hello.pdf" />
-	<a href="${updateLink}">Pdf Document Link</a>
 
 	
+	<c:url var="updateLink" value="${pageContect.request.contextPath}/hello.pdf" />
+	<a href="${updateLink}">hello</a>
+
+	
+	<c:url var="updateLink2" value="${pageContect.request.contextPath}/hello_in_latex_files.pdf" />
+	<a href="${updateLink2}">hello_in_latex_files</a>
 </body>
 </html>
