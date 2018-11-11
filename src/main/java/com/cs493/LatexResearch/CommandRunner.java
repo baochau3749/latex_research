@@ -39,7 +39,7 @@ public class CommandRunner implements CommandLineRunner {
 		ClassLoader classLoader = getClass().getClassLoader();
 		
 		System.out.println("Run process - 2");
-		File file = new File(classLoader.getResource("document_2.tex").getFile());
+		File file = new File(classLoader.getResource("/document_2.tex").getFile());
 		
 //		System.out.println(">>> file getParent = " + file.getParent());
 //		System.out.println(">>> file getPath = " + file.getPath());
@@ -47,7 +47,7 @@ public class CommandRunner implements CommandLineRunner {
 //		System.out.println(">>> file name = " + file.getName());
 		
 		
-//		System.out.println("Run process - 3");
+		System.out.println("Run process - 3");
 //		Process p = Runtime.getRuntime().exec("pdflatex " + file.getPath());
 //		
 //		System.out.println("Run process - 4");		
