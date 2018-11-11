@@ -66,7 +66,7 @@ public class CommandRunner implements CommandLineRunner {
 //        cmd[3] = "target/classes/static/document_2.tex" ;
 
 		String[] cmd = new String[1];
-		cmd[0] = "test" ;
+		cmd[0] = "pdfScript" ;
 //        cmd[1] = "--output-format=pdf";
 //        cmd[2] = "--output-directory=target/classes/static";
 //        cmd[3] = "target/classes/static/document_2.tex" ;
