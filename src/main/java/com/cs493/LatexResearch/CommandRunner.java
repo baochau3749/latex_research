@@ -66,22 +66,22 @@ public class CommandRunner implements CommandLineRunner {
 		System.out.println("Run process - 3");
 		Process p = Runtime.getRuntime().exec(cmd);
 		
-		System.out.println("Run process - 4");		
-		BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));		
-		BufferedReader stdError = new BufferedReader(new InputStreamReader(p.getErrorStream()));
-		
-		System.out.println("Run process - 5");
-		System.out.println("****************************************************************");
-        System.out.println("Result status:");		
-		String s = null;
-        while ((s = stdInput.readLine()) != null) {
-            System.out.println(s);
-        }
-        
-        System.out.println("Result error:");
-        while ((s = stdError.readLine()) != null) {
-            System.out.println(s);
-        }
+//		System.out.println("Run process - 4");		
+//		BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));		
+//		BufferedReader stdError = new BufferedReader(new InputStreamReader(p.getErrorStream()));
+//		
+//		System.out.println("Run process - 5");
+//		System.out.println("****************************************************************");
+//        System.out.println("Result status:");		
+//		String s = null;
+//        while ((s = stdInput.readLine()) != null) {
+//            System.out.println(s);
+//        }
+//        
+//        System.out.println("Result error:");
+//        while ((s = stdError.readLine()) != null) {
+//            System.out.println(s);
+//        }
         System.out.println("****************************************************************");
         
         
