@@ -18,6 +18,7 @@ public class CommandRunner implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		logger.info("\n>>> Start Latex_Research from CommandRunner...................");
 		
+		logger.info("\n>>> Call LATEX_DIR.getFile().getName()...................");
 		String latexFolder = LATEX_DIR.getFile().getName();
 		String pdfDoc = latexFolder + "\\hello.pdf";
 		
