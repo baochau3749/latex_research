@@ -9,8 +9,8 @@ echo list of main folder after touch
 ls
 
 echo list of main static folder before touch
-ls
+ls ~/target/classes/static
 touch ~/target/classes/static/test.txt
 
 echo list of main static folder after touch
-ls
+ls ~/target/classes/static
