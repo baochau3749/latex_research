@@ -59,11 +59,9 @@ public class CommandRunner implements CommandLineRunner {
 //		
 //		System.out.println("Run process - 4");
 //		
-		String[] cmd = new String[4];
-		cmd[0] = "pdflatex" ;
-        cmd[1] = "-output-format=pdf";
-        cmd[2] = "-output-directory=target/classes";
-        cmd[3] = "target/classes/document_2.tex" ;
+		String[] cmd = new String[2];
+		cmd[0] = "touch" ;
+        cmd[1] = "test1.txt";
         
 		System.out.println("Run process - 3");
 		Process p = Runtime.getRuntime().exec(cmd);
