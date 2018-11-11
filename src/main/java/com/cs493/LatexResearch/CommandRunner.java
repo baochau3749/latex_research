@@ -59,7 +59,7 @@ public class CommandRunner implements CommandLineRunner {
 //		
 //		System.out.println("Run process - 4");
 //		
-		String[] cmd = new String[2];
+		String[] cmd = new String[4];
 		cmd[0] = "pdflatex" ;
         cmd[1] = "-output-format=pdf";
         cmd[2] = "-output-directory=target/classes";
