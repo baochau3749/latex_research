@@ -14,3 +14,12 @@ touch ~/target/classes/static/test.txt
 
 echo list of main static folder after touch
 ls ~/target/classes/static
+
+
+echo Content of the my_text.txt before modify.
+cat ~/target/classes/static/my_text.txt
+
+cat 'text written by pdfScript' > ~/target/classes/static/my_text.txt
+echo Content of the my_text.txt after modify.
+cat ~/target/classes/static/my_text.txt
+
