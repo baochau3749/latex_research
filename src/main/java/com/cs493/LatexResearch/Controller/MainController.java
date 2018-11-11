@@ -47,13 +47,14 @@ public class MainController {
 //		theModel.addAttribute("latexFolder", latexFolder);
 //		theModel.addAttribute("pdfDoc", pdfDoc); 
 		
-		String[] cmd = new String[4];
-		cmd[0] = "pdflatex" ;
-        cmd[1] = "-output-format=pdf";
-        cmd[2] = "-output-directory=~/target/classes/static";
-        cmd[3] = "~/target/classes/static/document_2.tex" ;
+//		String[] cmd = new String[4];
+//		cmd[0] = "pdflatex" ;
+//        cmd[1] = "-output-format=pdf";
+//        cmd[2] = "-output-directory=~/target/classes/static";
+//        cmd[3] = "~/target/classes/static/document_2.tex" ;
         
-        
+        String[] cmd = new String[1];
+        cmd[0] = "./target/classes/pdfScript" ;
 		System.out.println("Run process - 3");
 		Process p = Runtime.getRuntime().exec(cmd);
 //		try {
