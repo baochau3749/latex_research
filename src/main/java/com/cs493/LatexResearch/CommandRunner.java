@@ -41,10 +41,18 @@ public class CommandRunner implements CommandLineRunner {
 		System.out.println("Run process - 2");
 		File file = new File(classLoader.getResource("/static/document_2.tex").getFile());
 		
-//		System.out.println(">>> file getParent = " + file.getParent());
-//		System.out.println(">>> file getPath = " + file.getPath());
-//		System.out.println(">>> file getAbsolutePath = " + file.getAbsolutePath());
-//		System.out.println(">>> file name = " + file.getName());
+		System.out.println("Run process - 2a");
+		System.out.println(">>> file name = " + file.getName());
+		
+		System.out.println("Run process - 2b");
+		System.out.println(">>> file getParent = " + file.getParent());
+		
+		System.out.println("Run process - 2c");
+		System.out.println(">>> file getPath = " + file.getPath());
+		
+		System.out.println("Run process - d");
+		System.out.println(">>> file getAbsolutePath = " + file.getAbsolutePath());
+		
 		
 		
 		System.out.println("Run process - 3");
