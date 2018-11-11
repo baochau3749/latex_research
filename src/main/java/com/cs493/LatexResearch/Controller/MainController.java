@@ -30,7 +30,7 @@ public class MainController {
 	public static final Resource LATEX_DIR = new ClassPathResource("/latex_files");
 	
 	@RequestMapping("/")
-	@ResponseBody
+	//@ResponseBody
 	public String main(Model theModel) throws IOException {
 		
 		logger.info("\n>>> Start main from MainController...................");
@@ -54,7 +54,8 @@ public class MainController {
 //		theModel.addAttribute("latexFolder", latexFolder);
 //		theModel.addAttribute("pdfDoc", pdfDoc); 
 		
-		return "Hello - Updated main controller - 7";
+		//return "Hello - Updated main controller - 7";
+		return "hello";
 	}
 	
 }
