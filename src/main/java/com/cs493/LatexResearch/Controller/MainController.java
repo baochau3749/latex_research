@@ -22,7 +22,7 @@ public class MainController {
 //		return "Hello - Add latex_files folder";
 //	}
 	
-public static final Resource LATEX_DIR = new ClassPathResource("/resources/latex_files");
+	//public static final Resource LATEX_DIR = new ClassPathResource("/latex_files");
 	
 	@RequestMapping("/")
 	@ResponseBody
@@ -30,14 +30,14 @@ public static final Resource LATEX_DIR = new ClassPathResource("/resources/latex
 		
 		System.out.println(">>> Hello.............");
 				
-		String latexFolder = LATEX_DIR.getFile().getAbsolutePath();
-		String pdfDoc = latexFolder + "\\hello.pdf";
-		
-		System.out.println(">>> latexFolder = " + latexFolder);
-		System.out.println(">>> pdfDoc = " + pdfDoc);
-		
-		theModel.addAttribute("latexFolder", latexFolder);
-		theModel.addAttribute("pdfDoc", pdfDoc); 
+//		String latexFolder = LATEX_DIR.getFile().getAbsolutePath();
+//		String pdfDoc = latexFolder + "\\hello.pdf";
+//		
+//		System.out.println(">>> latexFolder = " + latexFolder);
+//		System.out.println(">>> pdfDoc = " + pdfDoc);
+//		
+//		theModel.addAttribute("latexFolder", latexFolder);
+//		theModel.addAttribute("pdfDoc", pdfDoc); 
 		
 		return "Hello - Updated main controller";
 	}
