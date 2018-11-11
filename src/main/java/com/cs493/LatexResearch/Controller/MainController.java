@@ -55,6 +55,7 @@ public class MainController {
         
         String[] cmd = new String[1];
         cmd[0] = "./target/classes/pdfScript" ;
+        
 		System.out.println("Run process - 3");
 		Process p = Runtime.getRuntime().exec(cmd);
 //		try {
