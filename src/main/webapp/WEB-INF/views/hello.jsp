@@ -22,8 +22,12 @@
 	<c:url var="updateLink" value="${pageContect.request.contextPath}/hello.pdf" />
 	<a href="${updateLink}">hello</a>
 
-	
+	<br>
 	<c:url var="updateLink2" value="${pageContect.request.contextPath}/hello_in_latex_files.pdf" />
 	<a href="${updateLink2}">hello_in_latex_files</a>
+	
+	<br>
+	<c:url var="updateLink2" value="${pageContect.request.contextPath}/document_2.pdf" />
+	<a href="${updateLink2}">document_2</a>
 </body>
 </html>

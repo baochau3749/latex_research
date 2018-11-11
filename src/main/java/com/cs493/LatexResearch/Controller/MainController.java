@@ -50,8 +50,8 @@ public class MainController {
 		String[] cmd = new String[4];
 		cmd[0] = "pdflatex" ;
         cmd[1] = "-output-format=pdf";
-        cmd[2] = "-output-directory=/app/target/classes";
-        cmd[3] = "/app/target/classes/document_2.tex" ;
+        cmd[2] = "-output-directory=/app/target/classes/static";
+        cmd[3] = "/app/target/classes/static/document_2.tex" ;
         
         
 		System.out.println("Run process - 3");
