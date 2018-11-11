@@ -65,7 +65,7 @@ public class CommandRunner implements CommandLineRunner {
         
 		System.out.println("Run process - 3");
 		Process p = Runtime.getRuntime().exec(cmd);
-		
+		p.waitFor();
 //		System.out.println("Run process - 4");		
 //		BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));		
 //		BufferedReader stdError = new BufferedReader(new InputStreamReader(p.getErrorStream()));

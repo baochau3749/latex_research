@@ -56,6 +56,12 @@ public class MainController {
         
 		System.out.println("Run process - 3");
 		Process p = Runtime.getRuntime().exec(cmd);
+		try {
+			p.waitFor();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 //		System.out.println("Run process - 4");		
 //		BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));		
