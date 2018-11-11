@@ -59,29 +59,31 @@ public class CommandRunner implements CommandLineRunner {
 //		
 //		System.out.println("Run process - 4");
 //		
-		String[] cmd = new String[2];
-		cmd[0] = "touch" ;
-        cmd[1] = "test1.txt";
+		String[] cmd = new String[4];
+		cmd[0] = "pdflatex" ;
+        cmd[1] = "-output-format=pdf";
+        cmd[2] = "-output-directory=~/target/classes/static";
+        cmd[3] = "target/classes/static/document_2.tex" ;
         
 		System.out.println("Run process - 3");
 		Process p = Runtime.getRuntime().exec(cmd);
-		p.waitFor();
-//		System.out.println("Run process - 4");		
-//		BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));		
-//		BufferedReader stdError = new BufferedReader(new InputStreamReader(p.getErrorStream()));
-//		
-//		System.out.println("Run process - 5");
-//		System.out.println("****************************************************************");
-//        System.out.println("Result status:");		
-//		String s = null;
-//        while ((s = stdInput.readLine()) != null) {
-//            System.out.println(s);
-//        }
-//        
-//        System.out.println("Result error:");
-//        while ((s = stdError.readLine()) != null) {
-//            System.out.println(s);
-//        }
+
+		System.out.println("Run process - 4");		
+		BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));		
+		BufferedReader stdError = new BufferedReader(new InputStreamReader(p.getErrorStream()));
+		
+		System.out.println("Run process - 5");
+		System.out.println("****************************************************************");
+        System.out.println("Result status:");		
+		String s = null;
+        while ((s = stdInput.readLine()) != null) {
+            System.out.println(s);
+        }
+        
+        System.out.println("Result error:");
+        while ((s = stdError.readLine()) != null) {
+            System.out.println(s);
+        }
         System.out.println("****************************************************************");
         
         
