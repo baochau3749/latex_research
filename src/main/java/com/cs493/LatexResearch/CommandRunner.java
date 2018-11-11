@@ -60,7 +60,7 @@ public class CommandRunner implements CommandLineRunner {
 //		System.out.println("Run process - 4");
 //		
 		System.out.println("Run process - 3");
-		Process p = Runtime.getRuntime().exec("pdflatex ~/target/classes/latex_files/document_2.tex");
+		Process p = Runtime.getRuntime().exec("pdflatex ~/target/classes/static/document_2.tex");
 		
 		System.out.println("Run process - 4");		
 		BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));		
