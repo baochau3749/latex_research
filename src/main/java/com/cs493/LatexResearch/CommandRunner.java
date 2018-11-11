@@ -24,6 +24,7 @@ public class CommandRunner implements CommandLineRunner {
 		logger.info("\n>>> Call LATEX_DIR.getFile().getName() - 6...................");
 		String latexFolder = LATEX_DIR.getURL().toString();
 		String pdfDoc = latexFolder + "\\hello.pdf";
+		String latexFile = latexFolder + "/document.tex";
 		
 		System.out.println(">>> latexFolder = " + latexFolder);
 		System.out.println(">>> pdfDoc = " + pdfDoc);
@@ -35,7 +36,7 @@ public class CommandRunner implements CommandLineRunner {
 		System.out.println("Run process - 1");
 		//Process p = Runtime.getRuntime().exec("ipconfig");
 		//Process p = Runtime.getRuntime().exec("pdflatex C:\\heroku\\bc-test-buildpack\\document.tex");
-		Process p = Runtime.getRuntime().exec("pdflatex test_latex_file.tex");
+		Process p = Runtime.getRuntime().exec("pdflatex " + latexFile);
 		System.out.println("Run process - 2");
 		//p.wait();
 		System.out.println("Run process - 3");
