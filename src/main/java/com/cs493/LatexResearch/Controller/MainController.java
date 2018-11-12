@@ -74,11 +74,10 @@ public class MainController {
 
 		
 		String content;
-		String property = System.getProperty("user.dir") +"/src/main/resources/static";
-		
-		//String filePath = "/" + MainController.class.getProtectionDomain().getCodeSource().getLocation().getPath()  + "application.properties";
-		String filePath = property + "my_text.txt";
-		content = filePath + "<br>";
+		String filePath = System.getProperty("user.dir") +"/src/main/resources/static/";
+		String fileName = filePath + "my_text.txt";
+
+		content = fileName + "<br>";
 		try {
 
 			File file = ResourceUtils.getFile(filePath);
