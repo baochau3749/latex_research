@@ -88,7 +88,8 @@ public class LatexContent {
 		content = "\\documentclass[paper=letter,oneside,fontsize=16pt, landscape, parskip=full]{scrartcl}\n";
 		content += "\\usepackage{contour}\n";
 		content += "\\usepackage[onehalfspacing]{setspace}\n";
-		content += "\\usepackage[placement=top,hshift=-72.5,vshift=-542]{background}\n";
+//		content += "\\usepackage[placement=top,hshift=-72.5,vshift=-542]{background}\n";
+		content += "\\usepackage[placement=top]{background}\n";
 		content += "\\newcommand{\\setfont}[1]{\\fontfamily{#1}\\selectfont}\n";
 		content += "\\pagestyle{empty}\n";
 		content += "\\begin{document}\n";
