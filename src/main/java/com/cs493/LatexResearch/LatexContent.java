@@ -100,13 +100,13 @@ public class LatexContent {
 		content += "\\bfseries\\center\n";
 		content += "\\Huge\\textcolor{blue}{" + this.title + "}}\n";
 		content += "\\bfseries\\center\n";
-		content += "\\begin{spacing}{1.8}\n";
+		content += "\\begin{spacing}{2}\n";
 		content += "\\large{Presented to}\\\n";
 		content += "\\end{spacing}\n";
 		content += "\\LARGE\\textit{" + this.name + "}\n\n\n";		
 		content += "\\large\\parbox{18cm}{\\center{\n";
 		content += this.description + "\n";
-		content += "\\begin{spacing}{2.5}\\end{spacing}}}\n\n";		
+		content += "\\begin{spacing}{2.0}\\end{spacing}}}\n\n";		
 		content += "\\scalebox{.7}{\n";
 		content += "\\setlength{\\tabcolsep}{2.6em}\n";
 		content += "\\centering{\n";
