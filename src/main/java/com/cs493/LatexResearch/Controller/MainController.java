@@ -65,7 +65,7 @@ public class MainController {
 		
 		String content;
 		//String filePath = System.getProperty("user.dir") + "/src/main/resources/static/" + "my_text.txt";
-		String filePath = System.getProperty("user.dir") + "target/classes/static/my_text.txt";
+		String filePath = System.getProperty("user.dir") + "/target/classes/static/my_text.txt";
 		
         String[] cmd = new String[1];
         cmd[0] = "./target/classes/pdfScript" ;
