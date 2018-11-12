@@ -75,7 +75,7 @@ public class MainController {
 		
 		String content;
 		String filePath = System.getProperty("user.dir") +"/src/main/resources/";
-		String fileName = filePath + "resources_my_text.txt";
+		String fileName = filePath + "application.properties";
 
 		content = fileName + "<br>";
 		try {
