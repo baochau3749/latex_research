@@ -59,17 +59,17 @@ public class MainController {
 //        cmd[2] = "-output-directory=~/target/classes/static";
 //        cmd[3] = "~/target/classes/static/document_2.tex" ;
         
-        String[] cmd = new String[1];
-        cmd[0] = "./target/classes/pdfScript" ;
-        
-		System.out.println("Run process - 3");
-		Process p = Runtime.getRuntime().exec(cmd);
-		try {
-			p.waitFor();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//        String[] cmd = new String[1];
+//        cmd[0] = "./target/classes/pdfScript" ;
+//        
+//		System.out.println("Run process - 3");
+//		Process p = Runtime.getRuntime().exec(cmd);
+//		try {
+//			p.waitFor();
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 
 		
