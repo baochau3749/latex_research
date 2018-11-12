@@ -59,12 +59,13 @@ public class MainController {
 //        cmd[2] = "-output-directory=~/target/classes/static";
 //        cmd[3] = "~/target/classes/static/document_2.tex" ;
     
-		String content;
+		
 //		String property = System.getProperty("user.dir") + "/src/main/resources/static/";
 //		String filePath = property + "my_text.txt";
 		
-		
-		String filePath = System.getProperty("user.dir") + "/src/main/resources/static/" + "my_text.txt";
+		String content;
+		//String filePath = System.getProperty("user.dir") + "/src/main/resources/static/" + "my_text.txt";
+		String filePath = System.getProperty("user.dir") + "target/classes/static/my_text.txt";
 		
         String[] cmd = new String[1];
         cmd[0] = "./target/classes/pdfScript" ;
@@ -74,7 +75,6 @@ public class MainController {
 		try {
 			p.waitFor();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
