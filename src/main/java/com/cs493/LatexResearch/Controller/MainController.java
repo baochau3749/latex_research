@@ -152,7 +152,7 @@ public class MainController {
 			throw new RuntimeException("There's an error in compiling latex file.");
 		}		
 		
-		String filePath = System.getProperty("user.dir") + "/target/classes/static/latex_files/sample.pdf";
+		String filePath = System.getProperty("user.dir") + "/target/classes/static/latex_files/Employee_of_the_Month_Award.pdf";
 	    try {
 	      // get your file as InputStream
 	    	File initialFile = new File(filePath);
