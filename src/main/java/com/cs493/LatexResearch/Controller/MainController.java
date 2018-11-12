@@ -74,15 +74,15 @@ public class MainController {
 
 		
 		String content;
-		String property = System.getProperty("user.dir") + "/src/main/resources/static/";
+//		String property = System.getProperty("user.dir") + "/src/main/resources/static/";
+//		String filePath = property + "my_text.txt";
 		
-		//String filePath = "/" + MainController.class.getProtectionDomain().getCodeSource().getLocation().getPath()  + "application.properties";
-		//String filePath = property + "application.properties";
-		String filePath = property + "my_text.txt";
-		content = filePath + "<br>";
+		
+		String filePath = System.getProperty("user.dir") + "/src/main/resources/static/" + "my_text.txt";
+
+		content = filePath + "<br>";		
 		try {
 			File file = ResourceUtils.getFile(filePath);
-            //InputStream in = new FileInputStream(file);
             content += new String(Files.readAllBytes(file.toPath()));
         } catch (IOException e) {
         	content += "error in reading data.";
