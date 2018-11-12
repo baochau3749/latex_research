@@ -82,6 +82,7 @@ public class MainController {
 
 			File file = ResourceUtils.getFile(filePath);
             content += new String(Files.readAllBytes(file.toPath()));
+            
         } catch (IOException e) {
         	content += "error in reading data.";
         }
