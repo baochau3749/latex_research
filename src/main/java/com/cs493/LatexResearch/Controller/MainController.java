@@ -167,4 +167,33 @@ public class MainController {
 	    	throw new RuntimeException("IOError writing file to output stream");
 	    }
 	}
+	
+	@RequestMapping(value = "getAward2", method = RequestMethod.GET)
+	public void getAward2(HttpServletResponse response) {
+		
+		Process p;
+		try {
+			p = Runtime.getRuntime().exec("./target/classes/latex_compiler");
+			p.waitFor();
+		} catch (IOException e) {
+			throw new RuntimeException("There's an error in compiling latex file.");			
+		} catch (InterruptedException e) {
+			throw new RuntimeException("There's an error in compiling latex file.");
+		}		
+		
+		String filePath = System.getProperty("user.dir") + "/target/classes/static/latex_files/Top_Performance_of_the_Year_Award.pdf";
+	    try {
+	      // get your file as InputStream
+	    	File initialFile = new File(filePath);
+	        InputStream targetStream = new FileInputStream(initialFile);  
+      	      
+	      // copy it to response's OutputStream
+	      IOUtils.copy(targetStream, response.getOutputStream());
+	      response.flushBuffer();	      
+	      
+	    } catch (IOException ex) {
+	    	logger.info("Error writing file to output stream. Filename was '{}'", filePath, ex);
+	    	throw new RuntimeException("IOError writing file to output stream");
+	    }
+	}
 }

@@ -1,3 +1,4 @@
 #!/bin/bash
 cd target/classes/static/latex_files
 pdflatex Employee_of_the_Month_Award.tex
+pdflatex Top_Performance_of_the_Year_Award.tex
