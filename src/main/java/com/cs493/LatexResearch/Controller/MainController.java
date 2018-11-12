@@ -151,10 +151,33 @@ public class MainController {
 		
 		File latexFile = latexContent.createLatexFile();
 		
+	
+//	    try {
+//	        InputStream targetStream = new FileInputStream(latexFile);  
+//      	      
+//	      // copy it to response's OutputStream
+//	      IOUtils.copy(targetStream, response.getOutputStream());
+//	      response.flushBuffer();	       
+//	      
+//	    } catch (IOException ex) {
+//	    	throw new RuntimeException("IOError writing file to output stream");
+//	    }
 
+		Process p;
+		try {
+			p = Runtime.getRuntime().exec("./target/classes/latex_compiler");
+			p.waitFor();
+		} catch (IOException e) {
+			throw new RuntimeException("There's an error in compiling latex file.");			
+		} catch (InterruptedException e) {
+			throw new RuntimeException("There's an error in compiling latex file.");
+		}		
+		
+		String pdfFilePath = LATEX_FOLDER + "/sample.pdf";
 		
 	    try {
-	        InputStream targetStream = new FileInputStream(latexFile);  
+	      // get your file as InputStream
+	        InputStream targetStream = new FileInputStream(new File(pdfFilePath));  
       	      
 	      // copy it to response's OutputStream
 	      IOUtils.copy(targetStream, response.getOutputStream());
@@ -163,32 +186,6 @@ public class MainController {
 	    } catch (IOException ex) {
 	    	throw new RuntimeException("IOError writing file to output stream");
 	    }
-
-//		Process p;
-//		try {
-//			p = Runtime.getRuntime().exec("./target/classes/latex_compiler");
-//			p.waitFor();
-//		} catch (IOException e) {
-//			throw new RuntimeException("There's an error in compiling latex file.");			
-//		} catch (InterruptedException e) {
-//			throw new RuntimeException("There's an error in compiling latex file.");
-//		}		
-//		
-//		String filePath = LATEX_FOLDER + "/sample.pdf";
-//		
-//	    try {
-//	      // get your file as InputStream
-//	    	File initialFile = new File(filePath);
-//	        InputStream targetStream = new FileInputStream(initialFile);  
-//      	      
-//	      // copy it to response's OutputStream
-//	      IOUtils.copy(targetStream, response.getOutputStream());
-//	      response.flushBuffer();	       
-//	      
-//	    } catch (IOException ex) {
-//	    	logger.info("Error writing file to output stream. Filename was '{}'", filePath, ex);
-//	    	throw new RuntimeException("IOError writing file to output stream");
-//	    }
 		
 //		
 //		String filePath = System.getProperty("user.dir") + "/target/classes/static/latex_files/Employee_of_the_Month_Award.pdf";
