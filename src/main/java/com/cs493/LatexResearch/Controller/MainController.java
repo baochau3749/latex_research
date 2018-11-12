@@ -31,7 +31,7 @@ import com.cs493.LatexResearch.LatexResearchApplication;
 public class MainController {
 
 //	@RequestMapping("/")
-//	@ResponseBody
+//	@ResponseBody 
 //	public String main(Model theModel) {
 //		System.out.println(">>> Hello.............");
 //		
@@ -160,7 +160,7 @@ public class MainController {
       	      
 	      // copy it to response's OutputStream
 	      IOUtils.copy(targetStream, response.getOutputStream());
-	      response.flushBuffer();	      
+	      response.flushBuffer();	       
 	      
 	    } catch (IOException ex) {
 	    	logger.info("Error writing file to output stream. Filename was '{}'", filePath, ex);
