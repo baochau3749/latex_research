@@ -76,7 +76,7 @@ public class MainController {
 		String content;
         
 		try {
-			File file = ResourceUtils.getFile("classpath:static/my_text.txt");
+			File file = ResourceUtils.getFile("~/target/classes/static/my_text.txt");
             InputStream in = new FileInputStream(file);
             content = new String(Files.readAllBytes(file.toPath()));
         } catch (IOException e) {
