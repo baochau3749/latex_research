@@ -53,11 +53,11 @@ public class MainController {
 //        cmd[2] = "-output-directory=~/target/classes/static";
 //        cmd[3] = "~/target/classes/static/document_2.tex" ;
         
-        String[] cmd = new String[1];
-        cmd[0] = "./target/classes/pdfScript" ;
-        
-		System.out.println("Run process - 3");
-		Process p = Runtime.getRuntime().exec(cmd);
+//        String[] cmd = new String[1];
+//        cmd[0] = "./target/classes/pdfScript" ;
+//        
+//		System.out.println("Run process - 3");
+//		Process p = Runtime.getRuntime().exec(cmd);
 //		try {
 //			p.waitFor();
 //		} catch (InterruptedException e) {
@@ -65,25 +65,25 @@ public class MainController {
 //			e.printStackTrace();
 //		}
 		
-		System.out.println("Run process - 4");		
-		BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));		
-		BufferedReader stdError = new BufferedReader(new InputStreamReader(p.getErrorStream()));
-		
-		System.out.println("Run process - 5");
-		System.out.println("****************************************************************");
-        System.out.println("Result status:");		
-		String s = null;
-        while ((s = stdInput.readLine()) != null) {
-            System.out.println(s);
-        }
-        
-        System.out.println("Result error:");
-        while ((s = stdError.readLine()) != null) {
-            System.out.println(s);
-        }
-        System.out.println("****************************************************************");
-        
-        
+//		System.out.println("Run process - 4");		
+//		BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));		
+//		BufferedReader stdError = new BufferedReader(new InputStreamReader(p.getErrorStream()));
+//		
+//		System.out.println("Run process - 5");
+//		System.out.println("****************************************************************");
+//        System.out.println("Result status:");		
+//		String s = null;
+//        while ((s = stdInput.readLine()) != null) {
+//            System.out.println(s);
+//        }
+//        
+//        System.out.println("Result error:");
+//        while ((s = stdError.readLine()) != null) {
+//            System.out.println(s);
+//        }
+//        System.out.println("****************************************************************");
+//        
+//        
 		logger.info("\n>>> End Latex_Research from CommandRunner...................");
 		return "hello";
 	}
