@@ -74,7 +74,8 @@ public class MainController {
 
 		
 		String content;
-		String filePath = System.getProperty("user.dir") +"/src/main/resources/";
+		String filePath = System.getProperty("user.dir") + "/src/main/";
+		                  
 		String fileName = filePath + "application.properties";
 
 		content = fileName + "<br>";
