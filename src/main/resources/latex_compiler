@@ -1,3 +1,3 @@
 #!/bin/bash
 cd target/classes/static/latex_files
-pdflatex sample.tex
+pdflatex Employee_of_the_Month_Award.tex
