@@ -127,8 +127,7 @@ public class MainController {
 	      // get your file as InputStream
 	    	File initialFile = new File(filePath);
 	        InputStream targetStream = new FileInputStream(initialFile);  
-      
-	      
+      	      
 	      // copy it to response's OutputStream
 	      IOUtils.copy(targetStream, response.getOutputStream());
 	      response.flushBuffer();
@@ -148,9 +147,9 @@ public class MainController {
 			p = Runtime.getRuntime().exec("./target/classes/latex_compiler");
 			p.waitFor();
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new RuntimeException("There's an error in compiling latex file.");			
 		} catch (InterruptedException e) {
-			e.printStackTrace();
+			throw new RuntimeException("There's an error in compiling latex file.");
 		}		
 		
 		String filePath = System.getProperty("user.dir") + "/target/classes/static/latex_files/sample.pdf";
@@ -158,12 +157,10 @@ public class MainController {
 	      // get your file as InputStream
 	    	File initialFile = new File(filePath);
 	        InputStream targetStream = new FileInputStream(initialFile);  
-      
-	      
+      	      
 	      // copy it to response's OutputStream
 	      IOUtils.copy(targetStream, response.getOutputStream());
-	      response.flushBuffer();
-	      
+	      response.flushBuffer();	      
 	      
 	    } catch (IOException ex) {
 	    	logger.info("Error writing file to output stream. Filename was '{}'", filePath, ex);
