@@ -74,16 +74,16 @@ public class MainController {
 
 		
 		String content;
-		String filePath = System.getProperty("user.dir") + "/src/main/";
-		                  
-		String fileName = filePath + "application.properties";
-
-		content = fileName + "<br>";
+		String property = System.getProperty("user.dir") +"/src/main/resources/";
+		
+		//String filePath = "/" + MainController.class.getProtectionDomain().getCodeSource().getLocation().getPath()  + "application.properties";
+		String filePath = property + "application.properties";
+		content = filePath + "<br>";
 		try {
 
 			File file = ResourceUtils.getFile(filePath);
+            //InputStream in = new FileInputStream(file);
             content += new String(Files.readAllBytes(file.toPath()));
-            
         } catch (IOException e) {
         	content += "error in reading data.";
         }
