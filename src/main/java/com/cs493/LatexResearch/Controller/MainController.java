@@ -1,12 +1,14 @@
 package com.cs493.LatexResearch.Controller;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 
 import javax.servlet.http.HttpServletResponse;
@@ -24,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cs493.LatexResearch.LatexContent;
 import com.cs493.LatexResearch.LatexResearchApplication;
 
 @Controller
@@ -38,22 +41,22 @@ public class MainController {
 //	}
 
 	Logger logger = LoggerFactory.getLogger(LatexResearchApplication.class);
-	public static final Resource LATEX_DIR = new ClassPathResource("/latex_files");
-
+	//public static final Resource LATEX_DIR = new ClassPathResource("/latex_files");
+	public static final String LATEX_FOLDER = System.getProperty("user.dir") + "/target/classes/static/latex_files";
 	@RequestMapping("/")
 //	@ResponseBody
 	public String main(Model theModel) throws IOException {
 
 		logger.info("\n>>> Start main from MainController...................");
 
-		String latexFolder = LATEX_DIR.getURL().toString();
-		String pdfDoc = latexFolder + "/hello.pdf";
-
-		System.out.println(">>> latexFolder = " + latexFolder);
-		System.out.println(">>> pdfDoc = " + pdfDoc);
-
-		theModel.addAttribute("latexFolder", latexFolder);
-		theModel.addAttribute("pdfDoc", pdfDoc);
+//		String latexFolder = LATEX_DIR.getURL().toString();
+//		String pdfDoc = latexFolder + "/hello.pdf";
+//
+//		System.out.println(">>> latexFolder = " + latexFolder);
+//		System.out.println(">>> pdfDoc = " + pdfDoc);
+//
+//		theModel.addAttribute("latexFolder", latexFolder);
+//		theModel.addAttribute("pdfDoc", pdfDoc);
 
 //		String[] cmd = new String[4];
 //		cmd[0] = "pdflatex" ;
@@ -137,28 +140,104 @@ public class MainController {
 	@RequestMapping(value = "getAward", method = RequestMethod.GET)
 	public void getAward(HttpServletResponse response) {
 
-		String latexFilePath = System.getProperty("user.dir")
-				+ "/target/classes/static/latex_files/Employee_of_the_Month_Award.tex";
-		File file;
-		String fileContent;
+		String name = "Benjamin Johnson";		
+		String date = "11/11/2018";
+		String awarder = "Bao Chau";
+		
+		LatexContent latexContent = new LatexContent(LatexContent.EMPLOYEE_OF_THE_MONTH);
+		latexContent.setName(name);
+		latexContent.setDate(date);
+		latexContent.setAwarder(awarder);
+		
+		File latexFile = latexContent.createLatexFile();
+		
+    	//File initialFile = new File(filePath);
+		//
+		//InputStream targetStream = new FileInputStream(latexFile);  
+	      
+//		try {
+//			InputStream sourceStream = new ByteArrayInputStream(fileContent.getBytes(Charset.forName("UTF-8")));
+//			IOUtils.copy(sourceStream, response.getOutputStream());
+//		} catch (IOException e) {
+//			throw new RuntimeException("IOError writing file to output stream");
+//		}
+
+		Process p;
 		try {
-			file = ResourceUtils.getFile(latexFilePath);
-			fileContent = new String(Files.readAllBytes(file.toPath()));
-		} catch (FileNotFoundException e) {
-			throw new RuntimeException("There's an error in reading latex file.");
+			p = Runtime.getRuntime().exec("./target/classes/latex_compiler");
+			p.waitFor();
 		} catch (IOException e) {
-			throw new RuntimeException("There's an error in reading latex file.");
-		}
+			throw new RuntimeException("There's an error in compiling latex file.");			
+		} catch (InterruptedException e) {
+			throw new RuntimeException("There's an error in compiling latex file.");
+		}		
+		
+		String filePath = LATEX_FOLDER + "/sample.pdf";
+		
+	    try {
+	      // get your file as InputStream
+	    	File initialFile = new File(filePath);
+	        InputStream targetStream = new FileInputStream(initialFile);  
+      	      
+	      // copy it to response's OutputStream
+	      IOUtils.copy(targetStream, response.getOutputStream());
+	      response.flushBuffer();	       
+	      
+	    } catch (IOException ex) {
+	    	logger.info("Error writing file to output stream. Filename was '{}'", filePath, ex);
+	    	throw new RuntimeException("IOError writing file to output stream");
+	    }
+		
+//		
+//		String filePath = System.getProperty("user.dir") + "/target/classes/static/latex_files/Employee_of_the_Month_Award.pdf";
+//	    try {
+//	      // get your file as InputStream
+//	    	File initialFile = new File(filePath);
+//	        InputStream targetStream = new FileInputStream(initialFile);  
+//      	      
+//	      // copy it to response's OutputStream
+//	      IOUtils.copy(targetStream, response.getOutputStream());
+//	      response.flushBuffer();	       
+//	      
+//	    } catch (IOException ex) {
+//	    	logger.info("Error writing file to output stream. Filename was '{}'", filePath, ex);
+//	    	throw new RuntimeException("IOError writing file to output stream");
+//	    }
+		
+		
+//		String name = "Benjamin Johnson";		
+//		String date = "11/11/2018";
+//		String awarder = "Bao Chau";
+//		LatexContent latexContent = new LatexContent(LatexContent.EMPLOYEE_OF_THE_MONTH);
+//		latexContent.setName(name);
+//		latexContent.setDate(date);
+//		latexContent.setAwarder(awarder);
+//		logger.info(latexContent.getContent());
+//		
+//		
+//		String latexFilePath = System.getProperty("user.dir")
+//				+ "/target/classes/static/latex_files/newAward.tex";
+//		File file;
+//		String fileContent;
+//		try {
+//			file = ResourceUtils.getFile(latexFilePath);
+//			fileContent = new String(Files.readAllBytes(file.toPath()));
+//		} catch (FileNotFoundException e) {
+//			throw new RuntimeException("There's an error in reading latex file.");
+//		} catch (IOException e) {
+//			throw new RuntimeException("There's an error in reading latex file.");
+//		}
 
 //    	File initialFile = new File(filePath);
 //        InputStream targetStream = new FileInputStream(initialFile);  
 //  	      
 		// copy it to response's OutputStream
-		try {
-			IOUtils.copy(new FileInputStream(fileContent), response.getOutputStream());
-		} catch (IOException e) {
-			throw new RuntimeException("IOError writing file to output stream");
-		}
+//		try {
+//			InputStream sourceStream = new ByteArrayInputStream(fileContent.getBytes(Charset.forName("UTF-8")));
+//			IOUtils.copy(sourceStream, response.getOutputStream());
+//		} catch (IOException e) {
+//			throw new RuntimeException("IOError writing file to output stream");
+//		}
 
 //	    try {
 //	      // get your file as InputStream
