@@ -74,7 +74,10 @@ public class MainController {
 
 		
 		String content;
-		String filePath = "/" + MainController.class.getProtectionDomain().getCodeSource().getLocation().getPath()  + "application.properties";
+		String property = System.getProperty("user.dir") +"/src/main/resources/";
+		
+		//String filePath = "/" + MainController.class.getProtectionDomain().getCodeSource().getLocation().getPath()  + "application.properties";
+		String filePath = property + "application.properties";
 		content = filePath + "<br>";
 		try {
 
