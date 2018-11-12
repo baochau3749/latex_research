@@ -106,7 +106,7 @@ public class LatexContent {
 		content += "\\LARGE\\textit{" + this.name + "}\n\n\n";		
 		content += "\\large\\parbox{18cm}{\\center{\n";
 		content += this.description + "\n";
-		content += "\\begin{spacing}{3.2}\\end{spacing}}}\n\n";		
+		content += "\\begin{spacing}{2.5}\\end{spacing}}}\n\n";		
 		content += "\\scalebox{.7}{\n";
 		content += "\\setlength{\\tabcolsep}{2.6em}\n";
 		content += "\\centering{\n";
