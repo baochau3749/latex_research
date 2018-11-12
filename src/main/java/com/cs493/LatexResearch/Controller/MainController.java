@@ -122,7 +122,7 @@ public class MainController {
 	
 	@RequestMapping(value = "getFile", method = RequestMethod.GET)
 	public void getFile(HttpServletResponse response) {
-		String filePath = System.getProperty("user.dir") + "/target/classes/static/my_text.txt";
+		String filePath = System.getProperty("user.dir") + "/target/classes/static/hello.pdf";
 	    try {
 	      // get your file as InputStream
 	    	File initialFile = new File(filePath);
