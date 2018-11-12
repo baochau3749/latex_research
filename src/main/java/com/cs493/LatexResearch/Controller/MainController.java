@@ -35,23 +35,23 @@ public class MainController {
 //	}
 	
 	Logger logger = LoggerFactory.getLogger(LatexResearchApplication.class);
-//	public static final Resource LATEX_DIR = new ClassPathResource("/latex_files");
+	public static final Resource LATEX_DIR = new ClassPathResource("/latex_files");
 	
 	@RequestMapping("/")
-	@ResponseBody
+//	@ResponseBody
 	public String main(Model theModel) throws IOException {
 		
 		logger.info("\n>>> Start main from MainController...................");
 		
-//		
-//		String latexFolder = LATEX_DIR.getURL().toString();
-//		String pdfDoc = latexFolder + "/hello.pdf";
-//		
-//		System.out.println(">>> latexFolder = " + latexFolder);
-//		System.out.println(">>> pdfDoc = " + pdfDoc);
-//		
-//		theModel.addAttribute("latexFolder", latexFolder);
-//		theModel.addAttribute("pdfDoc", pdfDoc); 
+		
+		String latexFolder = LATEX_DIR.getURL().toString();
+		String pdfDoc = latexFolder + "/hello.pdf";
+		
+		System.out.println(">>> latexFolder = " + latexFolder);
+		System.out.println(">>> pdfDoc = " + pdfDoc);
+		
+		theModel.addAttribute("latexFolder", latexFolder);
+		theModel.addAttribute("pdfDoc", pdfDoc); 
 		
 //		String[] cmd = new String[4];
 //		cmd[0] = "pdflatex" ;
@@ -82,7 +82,8 @@ public class MainController {
         } catch (IOException e) {
         	content = "error in reading data.";
         }
-		return content;
+		theModel.addAttribute("content", content); 
+		//return content;
 		
 //		System.out.println("Run process - 4");;		
 //		BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));		
@@ -104,7 +105,7 @@ public class MainController {
 //        
 //        
 //		logger.info("\n>>> End Latex_Research from CommandRunner...................");
-//		return "hello";
+		return "hello";
 	}
 	
 }

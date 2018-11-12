@@ -31,7 +31,12 @@
 	<a href="${updateLink3}">document_2</a>
 	
 	<br>
-	<c:url var="updateLink4" value="${pageContect.request.contextPath}/latex_files/sample.pdf" />
-	<a href="${updateLink4}">sample</a>
+	<p><h4>Content: ${content}</h4></p>
+	<c:url var="updateLink4" value="${pageContect.request.contextPath}/my_text.txt" />
+	<a href="${updateLink4}">my_text.txt</a>
+	
+	<br>
+	<c:url var="updateLink5" value="${pageContect.request.contextPath}/latex_files/sample.pdf" />
+	<a href="${updateLink5}">sample</a>
 </body>
 </html>
