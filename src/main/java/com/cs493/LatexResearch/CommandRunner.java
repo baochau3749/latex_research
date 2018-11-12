@@ -65,13 +65,17 @@ public class CommandRunner implements CommandLineRunner {
 //        cmd[2] = "--output-directory=target/classes/static";
 //        cmd[3] = "target/classes/static/document_2.tex" ;
 
-		String[] cmd = new String[1];
-		cmd[0] = "chmod +x ./target/classes/pdfScript" ;
+//		String[] cmd = new String[1];
+//		cmd[0] = "chmod +x ./target/classes/pdfScript" ;
 
 		
 		System.out.println("Run process - 3a");
 		Process p1 = Runtime.getRuntime().exec("chmod +x ./target/classes/pdfScript");
 		p1.waitFor();
+		
+		System.out.println("Run process - 3a");
+		Process p2 = Runtime.getRuntime().exec("chmod +x ./target/classes/latex_compiler");
+		p2.waitFor();
 //		
 //		cmd[0] = "./target/classes/pdfScript" ;
 //		System.out.println("Run process - 3b");
