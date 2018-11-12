@@ -9,6 +9,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
@@ -18,6 +21,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cs493.LatexResearch.LatexResearchApplication;
@@ -64,7 +68,6 @@ public class MainController {
 //		String filePath = property + "my_text.txt";
 		
 		String content;
-		//String filePath = System.getProperty("user.dir") + "/src/main/resources/static/" + "my_text.txt";
 		String filePath = System.getProperty("user.dir") + "/target/classes/static/my_text.txt";
 		
         String[] cmd = new String[1];
@@ -113,4 +116,27 @@ public class MainController {
 		return "hello";
 	}
 	
+	public String getFile() {
+		return "";
+	}
+	
+	@RequestMapping(value = "getFile", method = RequestMethod.GET)
+	public void getFile(HttpServletResponse response) {
+		String filePath = System.getProperty("user.dir") + "/target/classes/static/my_text.txt";
+	    try {
+	      // get your file as InputStream
+	    	File initialFile = new File(filePath);
+	        InputStream targetStream = new FileInputStream(initialFile);  
+      
+	      
+	      // copy it to response's OutputStream
+	      IOUtils.copy(targetStream, response.getOutputStream());
+	      response.flushBuffer();
+	      
+	      
+	    } catch (IOException ex) {
+	    	logger.info("Error writing file to output stream. Filename was '{}'", filePath, ex);
+	    	throw new RuntimeException("IOError writing file to output stream");
+	    }
+	}
 }
