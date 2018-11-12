@@ -74,15 +74,15 @@ public class MainController {
 
 		
 		String content;
-        
+		String filePath = "/" + MainController.class.getProtectionDomain().getCodeSource().getLocation().getPath()  + "application.properties";
+		content = filePath + "<br>";
 		try {
-			String filePath = "/" + MainController.class.getProtectionDomain().getCodeSource().getLocation().getPath()  + "application.properties";
-			
+
 			File file = ResourceUtils.getFile(filePath);
             //InputStream in = new FileInputStream(file);
-            content = new String(Files.readAllBytes(file.toPath()));
+            content += new String(Files.readAllBytes(file.toPath()));
         } catch (IOException e) {
-        	content = "error in reading data.";
+        	content += "error in reading data.";
         }
 		theModel.addAttribute("content", content); 
 		//return content;
