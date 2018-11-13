@@ -116,7 +116,7 @@ public class LatexContent {
 //		content += "\\cline{4-4}\n";
 //		content += this.awarder + " & &  & Date\n";
 //		content += "\\end{tabular}\n";
-//		content += "}}\n";
+		content += "}}\n";
 		content += "\\begin{spacing}{.5}\\end{spacing}\n";
 		content += "\\end{document}\n";
 		return content;
