@@ -10,7 +10,7 @@ import org.springframework.util.ResourceUtils;
 
 public class LatexContent {	
 	public static final int EMPLOYEE_OF_THE_MONTH = 1;
-	public static final int TOP_PERFORMER_OT_THE_YEAR = 2;
+	public static final int TOP_PERFORMER_OF_THE_YEAR = 2;
 	
 	public static final String LATEX_FOLDER = System.getProperty("user.dir") + "/target/classes/static/latex_files";
 	

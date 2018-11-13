@@ -134,20 +134,28 @@ public class MainController {
 		}
 	}
 
-	@RequestMapping(value = "getAward", method = RequestMethod.POST) 	
-	@ResponseBody
-	public String getAward(HttpServletResponse response, 
+	@RequestMapping(value = "getAward", method = RequestMethod.POST) 		
+	public void getAward(HttpServletResponse response, 
 			@ModelAttribute("name") String name,
 			@ModelAttribute("date") String date,
 			@ModelAttribute("awarder") String awarder,
+			@ModelAttribute("type") int type,
 			Model theModel) {
+		LatexContent latexContent;
 		
-		LatexContent latexContent = new LatexContent(LatexContent.EMPLOYEE_OF_THE_MONTH);
+		if (type == LatexContent.EMPLOYEE_OF_THE_MONTH) {
+			latexContent = new LatexContent(LatexContent.EMPLOYEE_OF_THE_MONTH);
+		}		
+		else {
+			latexContent = new LatexContent(LatexContent.TOP_PERFORMER_OF_THE_YEAR);
+		}
+		
 		latexContent.setName(name);
 		latexContent.setDate(date);
 		latexContent.setAwarder(awarder);
 		
-		File latexFile = latexContent.createLatexFile();
+		//File latexFile = latexContent.createLatexFile();
+		latexContent.createLatexFile();
 		
 		Process p;
 		try {
@@ -163,7 +171,7 @@ public class MainController {
 		
 	    try {
 	      // get your file as InputStream
-	        InputStream targetStream = new FileInputStream(new File(pdfFilePath));  
+	      InputStream targetStream = new FileInputStream(new File(pdfFilePath));  
       	      
 	      // copy it to response's OutputStream
 	      IOUtils.copy(targetStream, response.getOutputStream());
@@ -172,7 +180,7 @@ public class MainController {
 	    } catch (IOException ex) {
 	    	throw new RuntimeException("IOError writing file to output stream");
 	    }
-		return name;
+		//return name;
 	}
 	
 	
