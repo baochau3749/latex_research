@@ -141,7 +141,7 @@ public class MainController {
 			@ModelAttribute("awarder") String awarder,
 			@ModelAttribute("type") int type,
 			Model theModel) {
-		LatexContent latexContent;
+		LatexContent latexContent = null;
 		
 		if (type == LatexContent.EMPLOYEE_OF_THE_MONTH) {
 			latexContent = new LatexContent(LatexContent.EMPLOYEE_OF_THE_MONTH);
@@ -197,18 +197,6 @@ public class MainController {
 		latexContent.setAwarder(awarder);
 		
 		File latexFile = latexContent.createLatexFile();
-		
-	
-//	    try {
-//	        InputStream targetStream = new FileInputStream(latexFile);  
-//      	      
-//	      // copy it to response's OutputStream
-//	      IOUtils.copy(targetStream, response.getOutputStream());
-//	      response.flushBuffer();	       
-//	      
-//	    } catch (IOException ex) {
-//	    	throw new RuntimeException("IOError writing file to output stream");
-//	    }
 
 		Process p;
 		try {
@@ -232,96 +220,6 @@ public class MainController {
 	      
 	    } catch (IOException ex) {
 	    	throw new RuntimeException("IOError writing file to output stream");
-	    }
-		
-//		
-//		String filePath = System.getProperty("user.dir") + "/target/classes/static/latex_files/Employee_of_the_Month_Award.pdf";
-//	    try {
-//	      // get your file as InputStream
-//	    	File initialFile = new File(filePath);
-//	        InputStream targetStream = new FileInputStream(initialFile);  
-//      	      
-//	      // copy it to response's OutputStream
-//	      IOUtils.copy(targetStream, response.getOutputStream());
-//	      response.flushBuffer();	       
-//	      
-//	    } catch (IOException ex) {
-//	    	logger.info("Error writing file to output stream. Filename was '{}'", filePath, ex);
-//	    	throw new RuntimeException("IOError writing file to output stream");
-//	    }
-		
-		
-//		String name = "Benjamin Johnson";		
-//		String date = "11/11/2018";
-//		String awarder = "Bao Chau";
-//		LatexContent latexContent = new LatexContent(LatexContent.EMPLOYEE_OF_THE_MONTH);
-//		latexContent.setName(name);
-//		latexContent.setDate(date);
-//		latexContent.setAwarder(awarder);
-//		logger.info(latexContent.getContent());
-//		
-//		
-//		String latexFilePath = System.getProperty("user.dir")
-//				+ "/target/classes/static/latex_files/newAward.tex";
-//		File file;
-//		String fileContent;
-//		try {
-//			file = ResourceUtils.getFile(latexFilePath);
-//			fileContent = new String(Files.readAllBytes(file.toPath()));
-//		} catch (FileNotFoundException e) {
-//			throw new RuntimeException("There's an error in reading latex file.");
-//		} catch (IOException e) {
-//			throw new RuntimeException("There's an error in reading latex file.");
-//		}
-
-//    	File initialFile = new File(filePath);
-//        InputStream targetStream = new FileInputStream(initialFile);  
-//  	      
-		// copy it to response's OutputStream
-//		try {
-//			InputStream sourceStream = new ByteArrayInputStream(fileContent.getBytes(Charset.forName("UTF-8")));
-//			IOUtils.copy(sourceStream, response.getOutputStream());
-//		} catch (IOException e) {
-//			throw new RuntimeException("IOError writing file to output stream");
-//		}
-
-//	    try {
-//	      // get your file as InputStream
-//	    	File initialFile = new File(latexFilePath);
-//	        InputStream targetStream = new FileInputStream(initialFile);  
-//      	      
-//	      // copy it to response's OutputStream
-//	      IOUtils.copy(targetStream, response.getOutputStream());
-//	      response.flushBuffer();	       
-//	      
-//	    } catch (IOException ex) {
-//	    	logger.info("Error writing file to output stream. Filename was '{}'", filePath, ex);
-//	    	throw new RuntimeException("IOError writing file to output stream");
-//	    }
-//	    
-//		Process p;
-//		try {
-//			p = Runtime.getRuntime().exec("./target/classes/latex_compiler");
-//			p.waitFor();
-//		} catch (IOException e) {
-//			throw new RuntimeException("There's an error in compiling latex file.");			
-//		} catch (InterruptedException e) {
-//			throw new RuntimeException("There's an error in compiling latex file.");
-//		}		
-//		
-//		String filePath = System.getProperty("user.dir") + "/target/classes/static/latex_files/Employee_of_the_Month_Award.pdf";
-//	    try {
-//	      // get your file as InputStream
-//	    	File initialFile = new File(filePath);
-//	        InputStream targetStream = new FileInputStream(initialFile);  
-//      	      
-//	      // copy it to response's OutputStream
-//	      IOUtils.copy(targetStream, response.getOutputStream());
-//	      response.flushBuffer();	       
-//	      
-//	    } catch (IOException ex) {
-//	    	logger.info("Error writing file to output stream. Filename was '{}'", filePath, ex);
-//	    	throw new RuntimeException("IOError writing file to output stream");
-//	    }
+	    }		
 	}
 }

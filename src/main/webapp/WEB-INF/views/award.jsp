@@ -19,6 +19,7 @@
 			<input type="hidden" id="timeCreated" name="timeCreated" value="${account.timeCreated}"/>			
 		</c:if>			    --%>
 				
+		<input type="hidden" name="type" value="1"/>	
 		<p>Name: <input type="text" name="name" value=""/></p>
 		<p>Date: <input type="text" name="date" value=""/></p>
 		<p>Given By: <input type="text" name="awarder" value=""/></p>
