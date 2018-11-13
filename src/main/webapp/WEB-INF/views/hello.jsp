@@ -42,7 +42,7 @@
 	<h2>Get Award Test</h2>
 	<hr>
 	
-	<form:form method="POST" action="${pageContext.request.contextPath}/getAward">
+	<%-- <form:form method="POST" action="${pageContext.request.contextPath}/getAward">
 		
 		<c:if test="${account != null}">
 			<input type="hidden" id="id" name="id" value="${id}"/>
@@ -54,7 +54,7 @@
 		<p>Given By: <input type="text" name="awarder" value=""/></p>
 
 		<input type="submit" value="Get Award"/>		
-	</form:form>
+	</form:form> --%>
 	
 </body>
 </html>
