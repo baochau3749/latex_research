@@ -9,7 +9,7 @@
 	<title>Hello-Page</title>
 </head>
 <body>
-	<h2>Hello World</h2>
+	<%-- <h2>Hello World</h2>
 	<hr>
 	
 	<p><h4>Latex Folder: ${latexFolder}</h4></p>
@@ -37,7 +37,7 @@
 	
 	<br>
 	<c:url var="updateLink5" value="${pageContect.request.contextPath}/latex_files/sample.pdf" />
-	<a href="${updateLink5}">sample</a>
+	<a href="${updateLink5}">sample</a> --%>
 	
 	<h2>Get Award Test</h2>
 	<hr>
