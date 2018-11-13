@@ -106,10 +106,10 @@ public class MainController {
 		return "award";
 	}
 	
-//	@RequestMapping("/award2")
-//	public String createAward2(Model theModel) throws IOException {
-//		return "award2";
-//	}
+	@RequestMapping("/award2")
+	public String createAward2(Model theModel) throws IOException {
+		return "award2";
+	}
 	
 	public String getFile() {
 		return "";
