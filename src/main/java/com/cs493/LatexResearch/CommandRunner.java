@@ -118,7 +118,6 @@ public class CommandRunner implements CommandLineRunner {
         
 		getAward();
 		logger.info("\n>>> End Latex_Research from CommandRunner...................");
-
 	}
 	
 //	public String getLatexContent(String title, String ) {
