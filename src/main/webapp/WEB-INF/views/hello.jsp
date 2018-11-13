@@ -38,5 +38,23 @@
 	<br>
 	<c:url var="updateLink5" value="${pageContect.request.contextPath}/latex_files/sample.pdf" />
 	<a href="${updateLink5}">sample</a>
+	
+	<h2>Get Award Test</h2>
+	<hr>
+	
+	<form:form method="POST" action="${pageContext.request.contextPath}/getAward">
+		
+		<c:if test="${account != null}">
+			<input type="hidden" id="id" name="id" value="${id}"/>
+			<input type="hidden" id="timeCreated" name="timeCreated" value="${account.timeCreated}"/>			
+		</c:if>			   
+				
+		<p>Name: <input type="text" name="name" value=""/></p>
+		<p>Date: <input type="text" name="date" value=""/></p>
+		<p>Given By: <input type="text" name="awarder" value=""/></p>
+
+		<input type="submit" value="Get Award"/>		
+	</form:form>
+	
 </body>
 </html>

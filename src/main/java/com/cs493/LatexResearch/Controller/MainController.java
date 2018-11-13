@@ -1,15 +1,10 @@
 package com.cs493.LatexResearch.Controller;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
+
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,10 +13,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.ResourceUtils;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -32,31 +26,24 @@ import com.cs493.LatexResearch.LatexResearchApplication;
 @Controller
 public class MainController {
 
-//	@RequestMapping("/")
-//	@ResponseBody 
-//	public String main(Model theModel) {
-//		System.out.println(">>> Hello.............");
-//		
-//		return "Hello - Add latex_files folder";
-//	}
-
 	Logger logger = LoggerFactory.getLogger(LatexResearchApplication.class);
-	//public static final Resource LATEX_DIR = new ClassPathResource("/latex_files");
+		
 	public static final String LATEX_FOLDER = System.getProperty("user.dir") + "/target/classes/static/latex_files";
+	public static final Resource LATEX_DIR = new ClassPathResource("/latex_files");
+	
 	@RequestMapping("/")
-//	@ResponseBody
 	public String main(Model theModel) throws IOException {
 
 		logger.info("\n>>> Start main from MainController...................");
 
-//		String latexFolder = LATEX_DIR.getURL().toString();
-//		String pdfDoc = latexFolder + "/hello.pdf";
-//
-//		System.out.println(">>> latexFolder = " + latexFolder);
-//		System.out.println(">>> pdfDoc = " + pdfDoc);
-//
-//		theModel.addAttribute("latexFolder", latexFolder);
-//		theModel.addAttribute("pdfDoc", pdfDoc);
+		String latexFolder = LATEX_DIR.getURL().toString();
+		String pdfDoc = latexFolder + "/hello.pdf";
+
+		System.out.println(">>> latexFolder = " + latexFolder);
+		System.out.println(">>> pdfDoc = " + pdfDoc);
+
+		theModel.addAttribute("latexFolder", latexFolder);
+		theModel.addAttribute("pdfDoc", pdfDoc);
 
 //		String[] cmd = new String[4];
 //		cmd[0] = "pdflatex" ;
@@ -67,28 +54,28 @@ public class MainController {
 //		String property = System.getProperty("user.dir") + "/src/main/resources/static/";
 //		String filePath = property + "my_text.txt";
 
-		String content;
-		String filePath = System.getProperty("user.dir") + "/target/classes/static/my_text.txt";
-
-		String[] cmd = new String[1];
-		cmd[0] = "./target/classes/pdfScript";
-
-		System.out.println("Run process - 3");
-		Process p = Runtime.getRuntime().exec(cmd);
-		try {
-			p.waitFor();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-
-		content = filePath + "<br>";
-		try {
-			File file = ResourceUtils.getFile(filePath);
-			content += new String(Files.readAllBytes(file.toPath()));
-		} catch (IOException e) {
-			content += "error in reading data.";
-		}
-		theModel.addAttribute("content", content);
+//		String content;
+//		String filePath = System.getProperty("user.dir") + "/target/classes/static/my_text.txt";
+//
+//		String[] cmd = new String[1];
+//		cmd[0] = "./target/classes/pdfScript";
+//
+//		System.out.println("Run process - 3");
+//		Process p = Runtime.getRuntime().exec(cmd);
+//		try {
+//			p.waitFor();
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+//
+//		content = filePath + "<br>";
+//		try {
+//			File file = ResourceUtils.getFile(filePath);
+//			content += new String(Files.readAllBytes(file.toPath()));
+//		} catch (IOException e) {
+//			content += "error in reading data.";
+//		}
+//		theModel.addAttribute("content", content);
 		// return content;
 
 //		System.out.println("Run process - 4");;		
@@ -137,8 +124,50 @@ public class MainController {
 		}
 	}
 
-	@RequestMapping(value = "getAward", method = RequestMethod.GET)
-	public void getAward(HttpServletResponse response) {
+	@RequestMapping(value = "getAward", method = RequestMethod.POST) 	
+	@ResponseBody
+	public String getAward(HttpServletResponse response, 
+			@ModelAttribute("name") String name,
+			@ModelAttribute("date") String date,
+			@ModelAttribute("awarder") String awarder,
+			Model theModel) {
+		
+		LatexContent latexContent = new LatexContent(LatexContent.EMPLOYEE_OF_THE_MONTH);
+		latexContent.setName(name);
+		latexContent.setDate(date);
+		latexContent.setAwarder(awarder);
+		
+		File latexFile = latexContent.createLatexFile();
+		
+		Process p;
+		try {
+			p = Runtime.getRuntime().exec("./target/classes/latex_compiler");
+			p.waitFor();
+		} catch (IOException e) {
+			throw new RuntimeException("There's an error in compiling latex file.");			
+		} catch (InterruptedException e) {
+			throw new RuntimeException("There's an error in compiling latex file.");
+		}		
+		
+		String pdfFilePath = LATEX_FOLDER + "/sample.pdf";
+		
+	    try {
+	      // get your file as InputStream
+	        InputStream targetStream = new FileInputStream(new File(pdfFilePath));  
+      	      
+	      // copy it to response's OutputStream
+	      IOUtils.copy(targetStream, response.getOutputStream());
+	      response.flushBuffer();	       
+	      
+	    } catch (IOException ex) {
+	    	throw new RuntimeException("IOError writing file to output stream");
+	    }
+		return name;
+	}
+	
+	
+	@RequestMapping(value = "testAwardFile", method = RequestMethod.GET)
+	public void testAwardFile(HttpServletResponse response) {
 
 		String name = "Benjamin Johnson";		
 		String date = "11/11/2018";
