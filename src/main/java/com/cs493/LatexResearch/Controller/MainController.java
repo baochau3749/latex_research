@@ -34,7 +34,7 @@ public class MainController {
 		
 	public static final String LATEX_FOLDER = System.getProperty("user.dir") + "src/main/resources/static/latex_files";
 	public static final Resource LATEX_DIR = new ClassPathResource("/latex_files");
-	public static final Resource APP_DIR = new ClassPathResource("/static");
+	public static final Resource APP_DIR = new ClassPathResource("/latex_files");
 	
 	@RequestMapping("/")
 	public String main(Model theModel) throws IOException {
@@ -55,8 +55,7 @@ public class MainController {
 		File  textFile = null;
 		
 		try {
-			textFile = ResourceUtils.getFile(filePath);
-//			latexFile = File.createTempFile("award", ".tex", latexFolder);			
+			textFile = ResourceUtils.getFile(filePath);		
 		    BufferedWriter writer = new BufferedWriter(new FileWriter(textFile));
 		    writer.write("New content for my_text.txt");
 		    writer.close();
