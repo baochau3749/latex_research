@@ -1,4 +1,5 @@
 #!/bin/bash
 cd target/classes/static/latex_files
+ls
 pdflatex sample.tex
 pdflatex sample.tex
