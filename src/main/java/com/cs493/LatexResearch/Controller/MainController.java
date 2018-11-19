@@ -68,16 +68,20 @@ public class MainController {
 //			//textFile = ResourceUtils.getFile(filePath);	
 			File file = ResourceUtils.getFile("classpath:static/my_text.txt");
 //			textFile = resource.getFile();
-//			
+			if (file == null)
+				throw new IOException("file is null");
+			
 		    BufferedWriter writer = new BufferedWriter(new FileWriter(file));
 		    writer.write("New content for my_text.txt\n");
 		    writer.write("New content for my_text.txt\n");
 		    writer.close();
 		    
 		} catch (FileNotFoundException e) {
-			throw new RuntimeException("There's an error in creating latex file.");
+//			throw new RuntimeException("There's an error in creating latex file.");
+			throw new RuntimeException(e.getMessage());
 		} catch (IOException e) {
-			throw new RuntimeException("There's an error in creating latex file.");
+//			throw new RuntimeException("There's an error in creating latex file.");
+			throw new RuntimeException(e.getMessage());
 		}
 		
 		
