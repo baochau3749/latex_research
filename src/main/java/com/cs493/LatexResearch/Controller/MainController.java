@@ -50,7 +50,7 @@ public class MainController {
 		theModel.addAttribute("latexFolder", latexFolder);
 		theModel.addAttribute("pdfDoc", pdfDoc);
 		
-		String filePath = "APP_DIR" + "/my_text.txt";
+		String filePath = APP_DIR.getURL().toString() + "/my_text.txt";
 
 		File  textFile = null;
 		
