@@ -1,7 +1,10 @@
 package com.cs493.LatexResearch.Controller;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -15,6 +18,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,6 +34,7 @@ public class MainController {
 		
 	public static final String LATEX_FOLDER = System.getProperty("user.dir") + "src/main/resources/static/latex_files";
 	public static final Resource LATEX_DIR = new ClassPathResource("/latex_files");
+	public static final Resource APP_DIR = new ClassPathResource("/");
 	
 	@RequestMapping("/")
 	public String main(Model theModel) throws IOException {
@@ -44,6 +49,25 @@ public class MainController {
 
 		theModel.addAttribute("latexFolder", latexFolder);
 		theModel.addAttribute("pdfDoc", pdfDoc);
+		
+		String filePath = "APP_DIR" + "/my_text.txt";
+
+		File  textFile = null;
+		
+		try {
+			textFile = ResourceUtils.getFile(filePath);
+//			latexFile = File.createTempFile("award", ".tex", latexFolder);			
+		    BufferedWriter writer = new BufferedWriter(new FileWriter(textFile));
+		    writer.write("New content for my_text.txt");
+		    writer.close();
+		    
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException("There's an error in creating latex file.");
+		} catch (IOException e) {
+			throw new RuntimeException("There's an error in creating latex file.");
+		}
+		
+		
 
 //		String[] cmd = new String[4];
 //		cmd[0] = "pdflatex" ;
