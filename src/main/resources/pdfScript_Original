@@ -1,0 +1,29 @@
+#!/bin/bash
+echo Start testing
+
+echo list of main folder before touch
+ls
+touch test.txt
+
+echo list of main folder after touch
+ls
+
+echo list of main static folder before touch
+ls ~/target/classes/static
+touch ~/target/classes/static/test.txt
+
+echo list of main static folder after touch
+ls ~/target/classes/static
+
+echo
+echo
+echo Content of the my_text.txt before modify.
+cat ~/target/classes/static/my_text.txt
+
+echo
+echo 'text written by pdfScript' > ~/target/classes/static/my_text.txt
+echo
+
+echo Content of the my_text.txt after modify.
+cat ~/target/classes/static/my_text.txt
+

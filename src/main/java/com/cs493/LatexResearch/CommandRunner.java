@@ -89,11 +89,16 @@ public class CommandRunner implements CommandLineRunner {
 		Process p1 = Runtime.getRuntime().exec("chmod +x ./target/classes/pdfScript");
 		p1.waitFor();
 		
-		System.out.println("Run process - 3a");
+		System.out.println("Run process - 3b");
 		Process p2 = Runtime.getRuntime().exec("chmod +x ./target/classes/latex_compiler");
 		p2.waitFor();
 
-		//		
+		System.out.println("Run process - 3c");
+		Process p3 = Runtime.getRuntime().exec("./target/classes/pdfScript");
+		p3.waitFor();
+		
+		
+		
 //		cmd[0] = "./target/classes/pdfScript" ;
 //		System.out.println("Run process - 3b");
 //		Process p = Runtime.getRuntime().exec(cmd);
@@ -116,7 +121,7 @@ public class CommandRunner implements CommandLineRunner {
 //        }
 //        System.out.println("****************************************************************");
         
-		getAward();
+//		getAward();
 		logger.info("\n>>> End Latex_Research from CommandRunner...................");
 	}
 	

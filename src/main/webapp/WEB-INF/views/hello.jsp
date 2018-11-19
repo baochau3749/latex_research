@@ -9,10 +9,14 @@
 	<title>Hello-Page</title>
 </head>
 <body>
-	<%-- <h2>Hello World</h2>
+	<h2>Hello World</h2>
 	<hr>
 	
-	<p><h4>Latex Folder: ${latexFolder}</h4></p>
+	
+	<c:url var="updateLink4" value="${pageContect.request.contextPath}/my_text.txt" />
+	<a href="${updateLink4}">my_text.txt</a>
+	
+	<%-- <p><h4>Latex Folder: ${latexFolder}</h4></p>
 	<p><h4>Pdf Document: ${pdfDoc}</h4></p>
 	
 	<p><h4>Pdf link: <a href="${pdfDoc}">Pdf Document Link</a></h4></p>
