@@ -67,7 +67,7 @@ public class MainController {
 //			//textFile = ResourceUtils.getFile(filePath);	
 			//File file = ResourceUtils.getFile("classpath:my_text.txt");
 
-	        String fileName = "sample.txt";
+	        String fileName = "my_text.txt";
 	        ClassLoader classLoader = new MainController().getClass().getClassLoader();
 	 
 	        File file = new File(classLoader.getResource(fileName).getFile());
