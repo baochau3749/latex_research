@@ -7,7 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
-
+import java.nio.file.Files;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -53,8 +53,7 @@ public class MainController {
 		System.out.println(">>> latexFolder = " + latexFolder);
 		System.out.println(">>> pdfDoc = " + pdfDoc);
 
-		theModel.addAttribute("latexFolder", latexFolder);
-		theModel.addAttribute("pdfDoc", pdfDoc);
+
 		
 		//String filePath = APP_DIR.getURL().toString() + "/my_text.txt";
 
@@ -72,14 +71,18 @@ public class MainController {
 	        ClassLoader classLoader = new MainController().getClass().getClassLoader();
 	 
 	        File file = new File(classLoader.getResource(fileName).getFile());
+
+	        String content = new String(Files.readAllBytes(file.toPath()));
+	        System.out.println(content);
 	        
+	        latexFolder = content;
 //			if (!file)
 //				throw new IOException("file is null");
 			
-		    BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-		    writer.write("New content for my_text.txt\n");
-		    writer.write("New content for my_text.txt\n");
-		    writer.close();
+//		    BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+//		    writer.write("New content for my_text.txt\n");
+//		    writer.write("New content for my_text.txt\n");
+//		    writer.close();
 		    
 		} catch (FileNotFoundException e) {
 //			throw new RuntimeException("There's an error in creating latex file.");
@@ -89,7 +92,8 @@ public class MainController {
 			throw new RuntimeException(e.getMessage());
 		}
 		
-		
+		theModel.addAttribute("latexFolder", latexFolder);
+		theModel.addAttribute("pdfDoc", pdfDoc);
 
 //		String[] cmd = new String[4];
 //		cmd[0] = "pdflatex" ;
