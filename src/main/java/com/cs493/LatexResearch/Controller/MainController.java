@@ -16,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.ResourceUtils;
@@ -36,6 +37,9 @@ public class MainController {
 	public static final Resource LATEX_DIR = new ClassPathResource("/latex_files");
 	public static final Resource APP_DIR = new ClassPathResource("/static/latex_files");
 	
+	private static ResourceLoader resourceLoader;
+	public static final Resource resource  = resourceLoader.getResource("classpath:\\static\\my_text.txt");
+	
 	@RequestMapping("/")
 	public String main(Model theModel) throws IOException {
 
@@ -55,9 +59,12 @@ public class MainController {
 		File  textFile = null;
 		
 		try {
-			textFile = ResourceUtils.getFile(filePath);		
+			//textFile = ResourceUtils.getFile(filePath);		
+			textFile = resource.getFile();
+			
 		    BufferedWriter writer = new BufferedWriter(new FileWriter(textFile));
-		    writer.write("New content for my_text.txt");
+		    writer.write("New content for my_text.txt\n");
+		    //writer.write(textFile.getPath());
 		    writer.close();
 		    
 		} catch (FileNotFoundException e) {
