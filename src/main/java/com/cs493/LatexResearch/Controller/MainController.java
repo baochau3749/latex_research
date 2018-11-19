@@ -66,10 +66,15 @@ public class MainController {
 //			File  textFile = null;
 //			
 //			//textFile = ResourceUtils.getFile(filePath);	
-			File file = ResourceUtils.getFile("classpath:my_text.txt");
-//			textFile = resource.getFile();
-			if (file == null)
-				throw new IOException("file is null");
+			//File file = ResourceUtils.getFile("classpath:my_text.txt");
+
+	        String fileName = "sample.txt";
+	        ClassLoader classLoader = new MainController().getClass().getClassLoader();
+	 
+	        File file = new File(classLoader.getResource(fileName).getFile());
+	        
+//			if (!file)
+//				throw new IOException("file is null");
 			
 		    BufferedWriter writer = new BufferedWriter(new FileWriter(file));
 		    writer.write("New content for my_text.txt\n");
