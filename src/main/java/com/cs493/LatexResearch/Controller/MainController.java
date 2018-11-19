@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
@@ -37,8 +38,9 @@ public class MainController {
 	public static final Resource LATEX_DIR = new ClassPathResource("/latex_files");
 	public static final Resource APP_DIR = new ClassPathResource("/static/latex_files");
 	
-	private static ResourceLoader resourceLoader;
-	public static final Resource resource  = resourceLoader.getResource("classpath://static//my_text.txt");
+	@Autowired
+	private ResourceLoader resourceLoader;
+	
 	
 	@RequestMapping("/")
 	public String main(Model theModel) throws IOException {
@@ -55,7 +57,7 @@ public class MainController {
 		theModel.addAttribute("pdfDoc", pdfDoc);
 		
 		//String filePath = APP_DIR.getURL().toString() + "/my_text.txt";
-
+		Resource resource  = resourceLoader.getResource("classpath://static//my_text.txt");
 		File  textFile = null;
 		
 		try {
