@@ -1,4 +1,4 @@
 #!/bin/bash
-cd target/classes/static/latex_files
+cd src/main/resources/static/latex_files
 pdflatex sample.tex
 pdflatex sample.tex

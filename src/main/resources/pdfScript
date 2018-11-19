@@ -2,7 +2,12 @@
 echo Start testing
 echo
 echo '~/target/classes/static/my_text.txt' > ~/target/classes/static/my_text.txt
-echo
 
-echo '~/src/main/resources/static/my_text.txt' > ~/src/main/resources/static/my_text.txt
 echo
+cat ~/target/classes/static/my_text.txt
+
+echo
+echo '~/src/main/resources/static/my_text.txt' > ~/src/main/resources/static/my_text.txt
+
+echo
+cat ~/src/main/resources/static/my_text.txt

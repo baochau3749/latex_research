@@ -28,7 +28,7 @@ public class MainController {
 
 	Logger logger = LoggerFactory.getLogger(LatexResearchApplication.class);
 		
-	public static final String LATEX_FOLDER = System.getProperty("user.dir") + "/target/classes/static/latex_files";
+	public static final String LATEX_FOLDER = System.getProperty("user.dir") + "src/main/resources/static/latex_files";
 	public static final Resource LATEX_DIR = new ClassPathResource("/latex_files");
 	
 	@RequestMapping("/")
