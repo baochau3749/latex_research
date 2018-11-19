@@ -66,7 +66,7 @@ public class MainController {
 //			File  textFile = null;
 //			
 //			//textFile = ResourceUtils.getFile(filePath);	
-			File file = ResourceUtils.getFile("classpath:static/my_text.txt");
+			File file = ResourceUtils.getFile("classpath:my_text.txt");
 //			textFile = resource.getFile();
 			if (file == null)
 				throw new IOException("file is null");
