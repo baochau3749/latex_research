@@ -34,7 +34,7 @@ public class MainController {
 		
 	public static final String LATEX_FOLDER = System.getProperty("user.dir") + "src/main/resources/static/latex_files";
 	public static final Resource LATEX_DIR = new ClassPathResource("/latex_files");
-	public static final Resource APP_DIR = new ClassPathResource("/");
+	public static final Resource APP_DIR = new ClassPathResource("/static");
 	
 	@RequestMapping("/")
 	public String main(Model theModel) throws IOException {
@@ -50,7 +50,7 @@ public class MainController {
 		theModel.addAttribute("latexFolder", latexFolder);
 		theModel.addAttribute("pdfDoc", pdfDoc);
 		
-		String filePath = APP_DIR.getURL().toString() + "my_text.txt";
+		String filePath = APP_DIR.getURL().toString() + "/my_text.txt";
 
 		File  textFile = null;
 		
